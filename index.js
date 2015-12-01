@@ -20,6 +20,8 @@ app.delete('/api/user', UserCtrl.deleteUser);
 
 
 
+var a = 4;
+
 
 app.listen(port, function() {
 	console.log("Listening on port:", port);
