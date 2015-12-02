@@ -6,31 +6,42 @@ var express = require('express')
 ,	mongooseUri = "mongodb://localhost:27017/irrigation-motor-control"
 ,	UserCtrl = require('./controllers/userCtrl.js')
 ,	passport = require('passport')
-,	flash = require('connect-flash')
-,	morgan = require('morgan')
-,	cookieParser = require('cookie-parser')
 ,	session = require('express-session')
-// ,	configDB = require('./config/database.js')
+,	GoogleStrategy = require('passport-google-oauth').OAuth2Strategy 
 ,	app = express()
 
-//mongoose.connect("mongodb://username:password@ds031903.mongolab.com:31903/example");
-app.use(morgan('dev'));
-app.use(cookieParser());
-app.use(bodyParser.json());
-app.use(cors());
-app.use(express.static(__dirname + '/public'));
-app.set('view engine', 'ejs'); // set up ejs for templating
+passport.use(new GoogleStrategy({
+	clientId: '889788685119-svv9ao951coi5cbpn1c7theh86gvpj48.apps.googleusercontent.com',
+	clientSecret: 'yCRIVEI4TtpPWjsqbJjg1jZx',
+	callbackURL: 'http://localhost:3000/auth/google/callback',
+	function(req, accessToken, refreshToken, profile, done){
+		done(null, profile)
+	}
+}));
 
-// required for passport
+
+app.use(bodyParser.json());
+app.use(cors())
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(express.static(__dirname + '/public'));
+
+
+
 app.use(session({ 
 	secret: 'anythingbutwhatwasalreadyherelololol',
 	saveUninitialized: true,
 	resave: true
-})); // session secret
+}));
 app.use(passport.initialize());
-app.use(passport.session()); // persistent login sessions
-app.use(flash());
-//require('./routes.js')(app, passport);
+app.use(passport.session()); 
+passport.serializeUser(function(user, done) {
+	done(null, user);
+})
+
+passport.deserializeUser(function(user, done) {
+	done(null, user);
+})
 
 //USER//
 app.post('/api/user', UserCtrl.addUser);
@@ -47,6 +58,6 @@ app.listen(port, function() {
 	console.log("Listening on port:", port);
 });
 mongoose.connect(mongooseUri);
-// mongoose.connection.once('open', function() {
-// 	console.log("Connected to MongoDB at:", mongooseUri);
-// });
+mongoose.connection.once('open', function() {
+	console.log("Connected to MongoDB at:", mongooseUri);
+});
