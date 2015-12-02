@@ -1,8 +1,9 @@
 var mongoose = require('mongoose');
 
 var User = new mongoose.Schema({
-	name: {type: String, required: true}
-,	password: {type: String, required: true}
+	displayName: {type: String, required: true}
+,	google: {type: Object}
+,	image: {type: String}
 ,	email: {type: String, required: true}
 ,	dateCreated: {type: Date, default: new Date()}
 ,	valves: [{type: mongoose.Schema.Types.ObjectId, ref: 'Valve'}]
