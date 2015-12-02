@@ -3,20 +3,16 @@
     <h1>ValveMotorControl</h1>
   </div>
 
-  <div class="dropdown">
-    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Number of Valves
-      <span class="caret"></span></button>
-    <ul class="dropdown-menu">
-      <li>1</li>
-      <li>2</li>
-      <li>3</li>
-      <li>4</li>
-      <li>5</li>
-    </ul>
-  </div>
-  <!--<button type="submit" class="btn btn-default">Submit</button>-->
-  <form ng-show="" action="">
-    <input type="text">
-    <input type="text">
-  </form>
-</div>
+<form action="">
+  <p>Name your valve!</p>
+  <input ng-model="valveName" type="text">
+  <p>Location</p>
+  <input ng-model="relativeLocation" type="text">
+  <p>Date on</p>
+  <input ng-model="dateOperate" type="date">
+  <p>Time on</p>
+  <input ng-model="timeOpen" type="time">
+  <p>Time off</p>
+  <input ng-model="timeClose" type="time">
+  
+</form>

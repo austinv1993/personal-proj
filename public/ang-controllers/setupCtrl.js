@@ -1,4 +1,4 @@
 angular.module('app')
-.controller('setupCtrl', function($scope) {
+.controller('setupCtrl', function($scope, setupService) {
 	
 })

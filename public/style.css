@@ -1,3 +1,20 @@
+html, body {
+	height: 100%;
+}
 .pointer {
 	cursor: pointer;
 }
+.signinholder {
+	text-align: center;
+}
+.signin {
+    -moz-appearance: button;
+    -webkit-appearance: button;
+    -ms-appearance: button;
+	color: black;
+	background-color: grey;
+	width: 30%;
+	text-align: center;
+	margin: auto 0;
+	border-radius: 5px;
+}​

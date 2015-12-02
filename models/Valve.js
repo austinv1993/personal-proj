@@ -1,8 +1,9 @@
 var mongoose = require('mongoose');
 
 var Valve = new mongoose.Schema({
-	relativeLocation: String
-,	name: String
-,	open: {type: String, required: true}
-,	close: {type: String, required: true}
+	valveName: {type: String, required: true}
+,	relativeLocation: String
+,	dateOperate: {type: Date, required: true}
+,	timeOpen: {type: String, required: true}
+,	timeClose: {type: String, required: true}
 })

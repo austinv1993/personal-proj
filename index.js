@@ -70,9 +70,7 @@ passport.serializeUser(function(user, done) {
 passport.deserializeUser(function(user, done) {
 	done(null, user);
 })
-// app.use('/', routes);
-// app.use('/users', users);
-// app.use('/auth', auth);
+
 app.route('/auth/google/callback')
 	.get(passport.authenticate('google', {
 		successRedirect: '/',
