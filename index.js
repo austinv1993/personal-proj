@@ -10,12 +10,13 @@ var express = require('express')
 ,	GoogleStrategy = require('passport-google-oauth').OAuth2Strategy 
 ,	auth = require('./routes/auth.js')
 ,	User = require('./models/User.js')
+,	secret = require('./js/secret.js')
 ,	router = require('./routes/users.js')
 ,	app = express();
 
 passport.use(new GoogleStrategy({
-	clientID: '889788685119-svv9ao951coi5cbpn1c7theh86gvpj48.apps.googleusercontent.com',
-	clientSecret: 'yCRIVEI4TtpPWjsqbJjg1jZx',
+	clientID: secret.clientID,
+	clientSecret: secret.clientSecret,
 	callbackURL: 'http://localhost:3000/auth/google/callback'
 },
 	function(req, accessToken, refreshToken, profile, done){
