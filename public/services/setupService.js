@@ -8,6 +8,7 @@ angular.module('app')
 		,	timeOpen: timeOpen
 		,	timeClose: timeClose
 		}).then()
+		// $http.post('/someUrl', {})
 	}
 	
 })

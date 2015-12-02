@@ -27,8 +27,8 @@ angular.module('app')
 		}
 		
 	}
-	$scope.loginUser = function(username, password) {
-		loginService.login(username)
+	$scope.loginUser = function() {
+		loginService.login()
 				.then(function(response) {
 					console.log(response);
 					if ($scope.password === response.password) {
@@ -38,4 +38,5 @@ angular.module('app')
 					}
 				})
 	}
+	
 })

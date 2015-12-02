@@ -84,12 +84,15 @@ app.route('/auth/google')
 
 //USER//
 app.post('/api/user', UserCtrl.addUser);
+app.get('')
 app.get('/api/userByUsername', UserCtrl.getUser)
 app.delete('/api/user', UserCtrl.deleteUser);
 app.get('/api/user/authenticated', function(req, res) {
 	console.log(req.user);
 	res.send(req.user);
 })
+//VALVES//
+app.post('/api/valve')
 
 
 
