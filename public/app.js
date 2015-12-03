@@ -6,7 +6,7 @@ angular.module('app', ['ui.router'])
 	$stateProvider
 		.state('login', {
 				url: '/login',
-				controller: 'loginCtrl',
+				// controller: 'loginCtrl',
 				templateUrl: './views/login.html'
 		})
 		.state('setup', {

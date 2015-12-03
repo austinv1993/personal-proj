@@ -1,21 +1,15 @@
 angular.module('app')
-.controller('setupCtrl', function($scope, $http, setupService) {
+.controller('setupCtrl', function($scope, $http, valveService) {
 	
 	
 	$scope.createNewValve = function() {
-		// console.log(timeOpen);
-		// console.log(timeClose);
-		$scope.valve.userId = $scope.authedUser.data._id;
-		setupService.createNewValve($scope.valve);
-		
-		// $scope.valve = {};
+		$scope.valve.userId = $scope.authenticatedUser._id;
+		valveService.createNewValve($scope.valve);
 	}
 	$scope.getCurrentUser = function() {
-		return $http.get('/api/user/authenticated')
-			.then(function(response) {
-				console.log(response)
-				$scope.authedUser = response;
-			})
+		valveService.getCurrentUser().then(function(userObject) {
+			$scope.authenticatedUser = userObject;	
+		})
 	}
 	$scope.getCurrentUser();
 })

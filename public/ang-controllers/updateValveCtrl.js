@@ -1,13 +1,11 @@
 angular.module('app')
-.controller('updateValveCtrl', function($scope, $stateParams, $http) {
+.controller('updateValveCtrl', function($scope, $stateParams, valveService) {
 	
 	var getValve = function(valveId) {
-					$http.get('/api/valve?valveId=' + valveId)
-						.then(function(result) {
-							$scope.valve = result.data;
-							console.log($scope.valve)
-						})
-				}
+		valveService.getValve(valveId).then(function(valve) {
+			$scope.valve = valve;
+		})				
+	}
 	getValve($stateParams.valveId);
 	console.log($stateParams.valveId)
 })
