@@ -7,10 +7,10 @@ angular.module('app')
 			})
 	};
 	this.login = function(username) {
-		$http.get('/api/userByUsername?username=' + username)
+		$http.get('/auth/google')
 			.then(function(response) {
 				console.log(response.data);
-				return response.data;
+				// $parent.user = response.data;
 			})
 			
 	};

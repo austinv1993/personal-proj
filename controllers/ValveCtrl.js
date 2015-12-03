@@ -6,13 +6,14 @@ module.exports = {
 			if (err) {
 				res.send(err);
 			} else {
-				res.send(user);
+				res.send(valve);
 			}
 		})
 	}
 ,	getValves: function(req, res) {
-		Valve.find({}).exec(function(err, valve) {
-			res.send(user);
+		Valve.find({userId: req.query.userId}, function(err, valves) {
+			if (err) res.send(err);
+			else res.send(valves)
 		})
 	}
 // ,	getUser: function(req, res) {

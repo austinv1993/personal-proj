@@ -4,7 +4,8 @@ var express = require('express')
 ,	bodyParser = require('body-parser')
 ,	port = 3000
 ,	mongooseUri = "mongodb://localhost:27017/irrigation-motor-control"
-,	UserCtrl = require('./controllers/userCtrl.js')
+,	UserCtrl = require('./controllers/UserCtrl.js')
+,	ValveCtrl = require('./controllers/ValveCtrl.js')
 ,	passport = require('passport')
 ,	session = require('express-session')
 ,	GoogleStrategy = require('passport-google-oauth').OAuth2Strategy 
@@ -73,7 +74,7 @@ passport.deserializeUser(function(user, done) {
 
 app.route('/auth/google/callback')
 	.get(passport.authenticate('google', {
-		successRedirect: '/',
+		successRedirect: '/#/account',
 		failureRedirect: '/error'
 	}));
 
@@ -84,7 +85,6 @@ app.route('/auth/google')
 
 //USER//
 app.post('/api/user', UserCtrl.addUser);
-app.get('')
 app.get('/api/userByUsername', UserCtrl.getUser)
 app.delete('/api/user', UserCtrl.deleteUser);
 app.get('/api/user/authenticated', function(req, res) {
@@ -92,7 +92,14 @@ app.get('/api/user/authenticated', function(req, res) {
 	res.send(req.user);
 })
 //VALVES//
-app.post('/api/valve')
+app.post('/api/valve', ValveCtrl.addValve);
+app.get('/api/valve', ValveCtrl.getValves);
+
+//AUTH//
+app.get('/api/user/authenticated', function(req, res) {
+	if(req.user) res.send(req.user);
+	else console.log('There is not authenticated user');
+})
 
 
 

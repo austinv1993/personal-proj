@@ -1,5 +1,5 @@
 angular.module('app')
-.controller('loginCtrl', function($scope, loginService) {
+.controller('loginCtrl', function($scope, $location, loginService) {
 	$scope.test = 'working';
 	$scope.login = function() {
 			$('#login-form-link').click(function (e) {
@@ -28,15 +28,7 @@ angular.module('app')
 		
 	}
 	$scope.loginUser = function() {
-		loginService.login()
-				.then(function(response) {
-					console.log(response);
-					if ($scope.password === response.password) {
-						console.log('successful')
-					} else {
-						alert('Incorrect password!')
-					}
-				})
+		$location.path('/auth/google')
 	}
 	
 })

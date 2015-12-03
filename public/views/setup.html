@@ -5,14 +5,13 @@
 
 <form action="">
   <p>Name your valve!</p>
-  <input ng-model="valveName" type="text">
+  <input ng-model="valve.valveName" type="text">
   <p>Location</p>
-  <input ng-model="relativeLocation" type="text">
-  <p>Date on</p>
-  <input ng-model="dateOperate" type="date">
+  <input ng-model="valve.relativeLocation" type="text">
   <p>Time on</p>
-  <input ng-model="timeOpen" type="time">
+  <input ng-model="valve.timeOpen" type="text">
   <p>Time off</p>
-  <input ng-model="timeClose" type="time">
-  <input ng-click="createNewValve(valveName, relativeLocation, dateOperate, timeOpen, timeClose)" type="submit">
-</form>
+  <input ng-model="valve.timeClose" type="text">
+  <input ng-click="createNewValve()" type="submit">
+</form>{{ authedUser.data._id }}
+</div>
