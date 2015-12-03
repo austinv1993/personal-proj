@@ -8,7 +8,6 @@ angular.module('app', ['ui.router'])
 				url: '/login',
 				controller: 'loginCtrl',
 				templateUrl: './views/login.html'
-				
 		})
 		.state('setup', {
 				url: '/setup',
@@ -19,7 +18,12 @@ angular.module('app', ['ui.router'])
 		.state('myAccnt', {
 				url: '/account',
 				controller: 'myAccntCtrl',
-				templateUrl: './views/myAccnt.html'
+				templateUrl: './views/accnt.html'
+		})
+		.state('update', {
+				url: '/update/:valveId',
+				controller: 'updateValveCtrl',
+				templateUrl: './views/updateValve.html'
 		})
 })
 

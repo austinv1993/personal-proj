@@ -93,7 +93,8 @@ app.get('/api/user/authenticated', function(req, res) {
 })
 //VALVES//
 app.post('/api/valve', ValveCtrl.addValve);
-app.get('/api/valve', ValveCtrl.getValves);
+app.get('/api/valves', ValveCtrl.getValves);
+app.get('/api/valve', ValveCtrl.getValve);
 
 //AUTH//
 app.get('/api/user/authenticated', function(req, res) {

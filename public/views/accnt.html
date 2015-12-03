@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="page-header">
+    <h1>ValveMotorControl</h1>
+  </div>
+  <button ui-sref="setup">Add New Valve</button> <!--switches user to setup state-->
+  <hr>
+<div ng-repeat="valve in valves">
+	<ul>
+	<div>Valve Name: {{valve.valveName}}</div>
+	<div>Relative Location: {{valve.relativeLocation}}</div>
+	<div>Time Open: {{valve.timeOpen}}</div>
+	<div>Time Close: {{valve.timeClose}}</div>
+	<div>Status: {{valve.status}}</div>
+	</ul>
+	<button ng-click="editValve(valve._id)">Edit Valve</button>	
+</div>
+
+</div>

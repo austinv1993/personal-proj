@@ -16,19 +16,18 @@ module.exports = {
 			else res.send(valves)
 		})
 	}
-// ,	getUser: function(req, res) {
-// 		var username = req.query.username;
-// 		console.log(username);
-// 		Valve.findOne({name: username}, function(err, user) {
-// 			if (err) {
-// 				console.log(err);
-// 				res.send(err);
-// 			} else {
-// 				console.log(user);
-// 				res.send(user);
-// 			}
-// 		})
-// }
+,	getValve: function(req, res) {
+		
+		Valve.findById(req.query.valveId, function(err, valve) {
+			if (err) {
+				console.log(err);
+				res.send(err);
+			} else {
+				console.log(valve);
+				res.send(valve);
+			}
+		})
+}
 
 ,	updateValve: function(req, res) {
 		Valve.findById(req.query.id, function(err, valve) {
