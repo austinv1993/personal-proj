@@ -22,4 +22,12 @@ angular.module('app')
 		$http.post('/api/valve', valve)
 		//I WANT TO RETURN THE VALVE OBJECT ON SUCCESS//
 	}
+	this.updateValve = function(valve) {
+
+		console.log('valve ', valve);
+		return $http.put('/api/valves?id=' + valve._id, valve).then(function(response) {
+			console.log(response);
+			return response.data;
+		})
+	}
 });

@@ -30,21 +30,12 @@ module.exports = {
 }
 
 ,	updateValve: function(req, res) {
-		Valve.findById(req.query.id, function(err, valve) {
+		Valve.findByIdAndUpdate(req.query.id, req.body, function(err, result) {
 			if (err) {
-				res.send(err);
+				res.status(500).send(err);
 			} else {
-				valve.title = req.body.title;
-				valve.date = req.body.date;
-				valve.tasks = req.body.tasks;
-				valve.save(function(err, project) {
-					if(err) {
-						res.send(err);
-					} else {
-						res.send(project);
-					}
-				})
 				
+				res.send(result);
 			}
 		})
 	}

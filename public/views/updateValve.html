@@ -4,14 +4,12 @@
   </div>
 
 <form action="">
-  <p>Name your valve!</p>
-  <input ng-model="valve.valveName" type="text">
-  <p>Location</p>
-  <input ng-model="valve.relativeLocation" type="text">
+  <p>Valve Name: {{valve.valveName}}</p>
   <p>Time on</p>
   <input ng-model="valve.timeOpen" type="datetime-local">
   <p>Time off</p>
   <input ng-model="valve.timeClose" type="datetime-local">
-  <input ng-click="updateValve()" type="submit">
+  <input ng-click="updateValve(valve)" type="submit">
 </form>
+<button ui-sref="myAccnt" >Back to Account Page</button>
 </div>

@@ -95,12 +95,14 @@ app.get('/api/user/authenticated', function(req, res) {
 app.post('/api/valve', ValveCtrl.addValve);
 app.get('/api/valves', ValveCtrl.getValves);
 app.get('/api/valve', ValveCtrl.getValve);
+app.put('/api/valves', ValveCtrl.updateValve);
 
 //AUTH//
 app.get('/api/user/authenticated', function(req, res) {
 	if(req.user) res.send(req.user);
 	else console.log('There is not authenticated user');
 })
+//HISTORY//
 
 
 
