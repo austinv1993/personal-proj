@@ -25,6 +25,11 @@ angular.module('app', ['ui.router'])
 				controller: 'updateValveCtrl',
 				templateUrl: './views/updateValve.html'
 		})
+		.state('history', {
+				url: '/history',
+				controller: 'historyCtrl',
+				templateUrl: './views/history.html'
+		})
 })
 
 

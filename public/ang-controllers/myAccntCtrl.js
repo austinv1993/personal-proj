@@ -21,8 +21,18 @@ angular.module('app')
 		valve.status = status;
 		valveService.updateValve(valve).then(function() {
 			$scope.getCurrentUser();
+			$scope.sendValveToHistory(valve);		
 		})
 	}
+	$scope.sendValveToHistory = function(valveObj) {
+		valveService.sendValveToHistory(valveObj);
+	}
+	// $scope.gottaClickIt = function(valveObj, status) {
+	// 	$scope.setCompleteOrFail(valveObj, status).then(function(response) {
+	// 		$scope.sendValveToHistory(response);
+	// 	})
+	// }
+	
 	
 	
 })

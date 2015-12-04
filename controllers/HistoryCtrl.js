@@ -8,7 +8,7 @@ module.exports = {
 			} else {
 				res.send(valve);
 			}
-		})
+		});
 	},
 	updateHistory: function(req, res) {
 		console.log('you hit me');
@@ -17,12 +17,18 @@ module.exports = {
 			else{
 				res.send(result);
 			}
-		})
+		});
 	},
 	getHistory: function(req, res) {
 		History.find({}, function(err, valves) {
 			if (err) res.send(err);
 			else res.send(valves)
-		})
+		});
+	},
+	getUserHistory: function(req, res) {
+		History.findOne({user: req.query.userId}, function(err, userHist) {
+			if (err) res.send(err);
+			else res.send(userHist);
+		});
 	}
 }

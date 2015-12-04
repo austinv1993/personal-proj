@@ -1,0 +1,36 @@
+<div class="container">
+	<div class="page-header">
+		<h1>ValveMotorControl</h1>
+		<p>My History</p>
+	</div>
+	<button ui-sref="myAccnt">My Account</button>
+	<hr>
+	
+
+	<div ng-repeat="valveSnap in userHistory.settings">
+
+		<div class="well">
+			<p>
+				<div>Valve Name: {{valveSnap.valveName}}</div>
+				<div>Time Opened: {{valveSnap.timeOpen | date:"MM/dd/yyyy 'at' h:mma"}}</div>
+				<div>Time Closed: {{valveSnap.timeClose| date:"MM/dd/yyyy 'at' h:mma"}}</div>
+				<div>Status: {{valveSnap.status}}</div>
+			</p>		
+		</div>
+		<hr>
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>

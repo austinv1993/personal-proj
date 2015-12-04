@@ -1,20 +1,23 @@
 <div class="container">
   <div class="page-header">
     <h1>ValveMotorControl</h1>
+	<div>My Account</div>
   </div>
   <button ui-sref="setup">Add New Valve</button> <!--switches user to setup state-->
+  <button ui-sref="history">My History</button>
   <hr>
 <div ng-repeat="valve in valves">
-	<ul>
+	<ul class="well">
 	<div>Valve Name: {{valve.valveName}}</div>
 	<div>Relative Location: {{valve.relativeLocation}}</div>
 	<div>Time Open: {{valve.timeOpen | date:"MM/dd/yyyy 'at' h:mma"}}</div>
 	<div>Time Close: {{valve.timeClose| date:"MM/dd/yyyy 'at' h:mma"}}</div>
 	<div>Status: {{valve.status}}</div>
-	</ul>
 	<button ng-click="editValve(valve._id)">Edit Valve</button>
-	<a class="pointer" ng-click="setCompleteOrFail(valve, 'Complete')">Set status: Complete</a> - 
-	<a class="pointer" ng-click="setCompleteOrFail(valve, 'Failed')">Set status: Fail</a>
+	<a class="pointer" ng-click="setCompleteOrFail(valve, 'Successful')">Set status: Successful</a> - 
+	<a class="pointer" ng-click="setCompleteOrFail(valve, 'Failed')">Set status: Failed</a>
+	</ul>
+	
 </div>
 
 </div>

@@ -106,7 +106,8 @@ app.get('/api/user/authenticated', function(req, res) {
 //HISTORY//
 app.post('/api/history', HistoryCtrl.addHistory);
 app.put('/api/history', HistoryCtrl.updateHistory);
-app.get('/api/history', HistoryCtrl.getHistory)
+app.get('/api/history', HistoryCtrl.getHistory);
+app.get('/api/history/user', HistoryCtrl.getUserHistory);
 
 
 

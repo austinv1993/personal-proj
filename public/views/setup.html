@@ -1,16 +1,19 @@
 <div class="container">
   <div class="page-header">
     <h1>ValveMotorControl</h1>
+    <div>Add New Valve</div>
   </div>
+  <button ui-sref="myAccnt">My Account</button>
+  <hr>
 
-<form action="">
-  <p>Name your valve!</p>
+<form class="well"action="">
+  <p>Name of valve:</p>
   <input ng-model="valve.valveName" type="text">
-  <p>Location</p>
+  <p>Location:</p>
   <input ng-model="valve.relativeLocation" type="text">
-  <p>Time on</p>
+  <p>Time on:</p>
   <input ng-model="valve.timeOpen" type="datetime-local">
-  <p>Time off</p>
+  <p>Time off:</p>
   <input ng-model="valve.timeClose" type="datetime-local">
   <input ng-click="createNewValve()" type="submit">
 </form>{{ authenticatedUser.data._id }}
