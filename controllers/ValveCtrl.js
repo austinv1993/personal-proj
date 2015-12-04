@@ -1,11 +1,22 @@
-var Valve = require('../models/Valve.js')
+var Valve = require('../models/Valve.js');
+var schedule = require('node-schedule');
 
 module.exports = {
 	addValve: function(req, res) {
 		new Valve(req.body).save(function(err, valve) {
+			var thisValve = req.body;
 			if (err) {
 				res.send(err);
 			} else {
+				var dateOn = new Date(req.body.timeOpen)
+				schedule.scheduleJob(dateOn, function() {
+					console.log(dateOn);
+					console.log(thisValve);
+				})
+				var dateOff = new Date(req.body.timeClose)
+				schedule.scheduleJob(dateOff, function() {
+					console.log(dateOff);
+				})
 				res.send(valve);
 			}
 		})
@@ -48,4 +59,4 @@ module.exports = {
 			}
 		})
 	}
-}
+};

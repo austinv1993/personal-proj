@@ -7,6 +7,7 @@ var express = require('express')
 ,	UserCtrl = require('./controllers/UserCtrl.js')
 ,	ValveCtrl = require('./controllers/ValveCtrl.js')
 ,	HistoryCtrl = require('./controllers/HistoryCtrl.js')
+,	NSCtrl = require('./controllers/NSCtrl.js')
 ,	passport = require('passport')
 ,	session = require('express-session')
 ,	GoogleStrategy = require('passport-google-oauth').OAuth2Strategy 
@@ -85,10 +86,8 @@ app.route('/auth/google')
 		scope: ['https://www.googleapis.com/auth/userinfo.profile', 'https://www.googleapis.com/auth/userinfo.email']
 	}));
 //NODE SCHEDULE JOBS/
-var date = new Date();
-var nodeJobs = schedule.scheduleJob(date, function() {
-	console.log('node job worked');
-});
+app.post('/api/newjob', NSCtrl.newNodeJob);
+
 
 //USER//
 app.post('/api/user', UserCtrl.addUser);
