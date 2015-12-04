@@ -14,6 +14,7 @@ var express = require('express')
 ,	User = require('./models/User.js')
 ,	secret = require('./js/secret.js')
 ,	router = require('./routes/users.js')
+,	schedule = require('node-schedule')
 ,	app = express();
 
 passport.use(new GoogleStrategy({
@@ -83,6 +84,11 @@ app.route('/auth/google')
 	.get(passport.authenticate('google', {
 		scope: ['https://www.googleapis.com/auth/userinfo.profile', 'https://www.googleapis.com/auth/userinfo.email']
 	}));
+//NODE SCHEDULE JOBS/
+var date = new Date();
+var nodeJobs = schedule.scheduleJob(date, function() {
+	console.log('node job worked');
+});
 
 //USER//
 app.post('/api/user', UserCtrl.addUser);
