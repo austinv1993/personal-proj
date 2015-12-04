@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var Valve = require('./Valve.js');
 
 var History = new mongoose.Schema({
-	settings: [Valve]
+	settings: []
 ,	user: {type: mongoose.Schema.Types.ObjectId, ref: 'User' }
 })
 

@@ -11,21 +11,18 @@ module.exports = {
 		})
 	},
 	updateHistory: function(req, res) {
-	
-		History.findById(req.params.userId, function(err, result){
-			if(err) return res.status(500).send(err);
+		console.log('you hit me');
+		History.findByIdAndUpdate(req.query.historyId, {$push: {settings: req.body}}, function(err, result){
+			if(err) res.status(500).send(err);
 			else{
-				result.settings.push(req.query.productId);
-				console.log(result.settings);
-				result.save(function(){
-					History.findById(req.params.userId).populate('settings')
-					.exec(function(err, user){
-						res.status(200).send(user.cart);
-​
-					})
-				});
+				res.send(result);
 			}
 		})
-	}
+	},
+	getHistory: function(req, res) {
+		History.find({}, function(err, valves) {
+			if (err) res.send(err);
+			else res.send(valves)
+		})
 	}
 }

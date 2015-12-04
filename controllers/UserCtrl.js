@@ -37,11 +37,11 @@ module.exports = {
 				user.title = req.body.title;
 				user.date = req.body.date;
 				user.tasks = req.body.tasks;
-				user.save(function(err, project) {
+				user.save(function(err, user) {
 					if(err) {
 						res.send(err);
 					} else {
-						res.send(project);
+						res.send(user);
 					}
 				})
 				

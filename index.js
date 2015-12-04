@@ -104,8 +104,9 @@ app.get('/api/user/authenticated', function(req, res) {
 	else console.log('There is not authenticated user');
 })
 //HISTORY//
-app.post('/api/history')
-app.get('api/history')
+app.post('/api/history', HistoryCtrl.addHistory);
+app.put('/api/history', HistoryCtrl.updateHistory);
+app.get('/api/history', HistoryCtrl.getHistory)
 
 
 
