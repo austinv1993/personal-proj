@@ -86,12 +86,12 @@ app.route('/auth/google')
 		scope: ['https://www.googleapis.com/auth/userinfo.profile', 'https://www.googleapis.com/auth/userinfo.email']
 	}));
 //NODE SCHEDULE JOBS/
-app.post('/api/newjob', NSCtrl.newNodeJob);
+app.post('/api/newjob', NSCtrl.newNodeJob); //NOT IN USE
 
 
 //USER//
 app.post('/api/user', UserCtrl.addUser);
-app.get('/api/userByUsername', UserCtrl.getUser)
+app.get('/api/userByUsername', UserCtrl.getUser);
 app.delete('/api/user', UserCtrl.deleteUser);
 app.get('/api/user/authenticated', function(req, res) {
 	console.log(req.user);

@@ -39,10 +39,16 @@ angular.module('app')
 			return response.data;
 		})
 	}
+	this.sendValveToHistoryTwo = function(valveObj) {
+		return $http.put('/api/history?userId=' + valveObj.userId, valveObj).then(function(response) {
+			return response.data;
+		})
+	}
 	this.getUserHistory = function(userId) {
 		return $http.get('/api/history/user?userId=' + userId).then(function(response) {
 			console.log('you hit getUserHistory, it ran, this is the response', response.data);
 			return response.data
 		})
 	}
+	
 });
