@@ -6,6 +6,7 @@ var express = require('express')
 ,	mongooseUri = "mongodb://localhost:27017/irrigation-motor-control"
 ,	UserCtrl = require('./controllers/UserCtrl.js')
 ,	ValveCtrl = require('./controllers/ValveCtrl.js')
+,	HistoryCtrl = require('./controllers/HistoryCtrl.js')
 ,	passport = require('passport')
 ,	session = require('express-session')
 ,	GoogleStrategy = require('passport-google-oauth').OAuth2Strategy 
@@ -103,6 +104,8 @@ app.get('/api/user/authenticated', function(req, res) {
 	else console.log('There is not authenticated user');
 })
 //HISTORY//
+app.post('/api/history')
+app.get('api/history')
 
 
 

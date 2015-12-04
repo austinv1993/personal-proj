@@ -1,11 +1,9 @@
 var mongoose = require('mongoose');
+var Valve = require('./Valve.js');
 
 var History = new mongoose.Schema({
-	valveName: {type: String, required: true}
-,	timeOpen: {type: Date, required: true}
-,	timeClose: {type: Date, required: true}
-,	userId: {type: String, required: true}
-,	status: {type: String, default: 'Pending'}	
+	settings: [Valve]
+,	user: {type: mongoose.Schema.Types.ObjectId, ref: 'User' }
 })
 
 module.exports = mongoose.model('History', History)
