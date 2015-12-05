@@ -1,5 +1,7 @@
 var Valve = require('../models/Valve.js');
 var schedule = require('node-schedule');
+var http = require('http');
+var needle = require('needle');
 
 module.exports = {
 	addValve: function(req, res) {
@@ -12,10 +14,33 @@ module.exports = {
 				schedule.scheduleJob(dateOn, function() {
 					console.log(dateOn);
 					console.log(thisValve);
+					needle
+						.post('https://my.server.com/foo', {valveID: thisValve._id, custID: thisValve.userId, valveState: 'open'}, { multipart: true }, function(err, resp, body) {
+							if (err) {
+								console.log(err);
+							} else {
+								if(resp) console.log(resp);
+								console.log(body);
+							}
+						})
+						.on('end', function() {
+							console.log('Ready-o, friend-o.');
+						})
 				})
 				var dateOff = new Date(req.body.timeClose)
 				schedule.scheduleJob(dateOff, function() {
 					console.log(dateOff);
+					needle
+						.post('https://my.server.com/foo', {valveID: thisValve._id, custID: thisValve.userId, valveState: 'close'}, { multipart: true }, function(err, resp, body) {
+							if (err) console.log(err);
+							else {
+								if (resp) console.log(resp);
+								console.log(body);
+							}
+						})
+						.on('end', function() {
+							console.log('Ready-o, friend-o.');
+						})
 				})
 				res.send(valve);
 			}
