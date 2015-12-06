@@ -16,6 +16,8 @@ var express = require('express')
 ,	secret = require('./js/secret.js')
 ,	router = require('./routes/users.js')
 ,	schedule = require('node-schedule')
+,	twilioSecret = require('./js/twilioSecret.js')
+,	client = require('twilio')(twilioSecret.clientId, twilioSecret.clientAuth)	
 ,	app = express();
 
 passport.use(new GoogleStrategy({
@@ -113,6 +115,18 @@ app.post('/api/history', HistoryCtrl.addHistory);
 app.put('/api/history', HistoryCtrl.updateHistory);
 app.get('/api/history', HistoryCtrl.getHistory);
 app.get('/api/history/user', HistoryCtrl.getUserHistory);
+
+// client.messages.create({
+//     body: "YO WHADUP",
+//     to: "+14803107459",
+//     from: "+15208660429"
+// }, function(err, message) {
+//     // process.stdout.write(message.sid);
+// 	if(err) console.log(err);
+// 	else {
+// 		console.log(message);
+// 	}
+// });
 
 
 

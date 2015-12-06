@@ -4,6 +4,7 @@ angular.module('app')
 	
 	$scope.createNewValve = function() {
 		$scope.valve.userId = $scope.authenticatedUser._id;
+		// $scope.valve.valveNumber = 
 		valveService.createNewValve($scope.valve);
 	}
 	$scope.getCurrentUser = function() {

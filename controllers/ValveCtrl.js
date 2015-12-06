@@ -15,7 +15,7 @@ module.exports = {
 					console.log(dateOn);
 					console.log(thisValve);
 					needle
-						.post('https://my.server.com/foo', {valveID: thisValve._id, custID: thisValve.userId, valveState: 'open'}, { multipart: true }, function(err, resp, body) {
+						.post('http://10.0.0.111', {valveID: thisValve._id, valveDrive: 'open'}, { multipart: true }, function(err, resp, body) {
 							if (err) {
 								console.log(err);
 							} else {
@@ -31,7 +31,7 @@ module.exports = {
 				schedule.scheduleJob(dateOff, function() {
 					console.log(dateOff);
 					needle
-						.post('https://my.server.com/foo', {valveID: thisValve._id, custID: thisValve.userId, valveState: 'close'}, { multipart: true }, function(err, resp, body) {
+						.post('http://10.0.0.111', {valveID: thisValve._id, valveDrive: 'close'}, { multipart: true }, function(err, resp, body) {
 							if (err) console.log(err);
 							else {
 								if (resp) console.log(resp);
