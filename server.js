@@ -134,6 +134,7 @@ needle
 	if (err) {
 	  console.log(err);
 	} else {
+	  console.log("no errors");
 	  if(resp)  {
 	    console.log(resp);
 		console.log(body);
