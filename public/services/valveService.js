@@ -20,7 +20,10 @@ angular.module('app')
 			})
 	}
 	this.createNewValve = function(valve) {
-		$http.post('/api/valve', valve)
+		return $http.post('/api/valve', valve)
+			.then(function(response) {
+				return response.data
+			})
 		//I WANT TO RETURN THE VALVE OBJECT ON SUCCESS//
 	}
 	this.updateValve = function(valve) {
@@ -30,6 +33,9 @@ angular.module('app')
 			return response.data;
 		})
 	}
+	// this.updateValveWithNumber = function() {
+		
+	// }
 	this.sendValveToHistory = function(valveObj) {
 		console.log('you hit sendValveToHistory()');
 		//**I HARDCODED IN THE ID OF THE HISTORY DOC THAT IM PUSHING VALVES INTO BELOW
@@ -50,9 +56,10 @@ angular.module('app')
 			return response.data
 		})
 	}
-	this.updateUserWithValveId = function(userObj, valveId) {
-		return $http.put('/api/user/update?_id=' + userObj._Id).then(function(response) {
-			return response.data;
+	this.updateUserWithValveId = function(userObj, valveObj) {
+		return $http.put('/api/user/update?_id=' + userObj._id, valveObj)
+			.then(function(response) {
+				return response.data;
 		})
 	}
 	

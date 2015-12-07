@@ -1,4 +1,4 @@
-var User = require('../models/User.js')
+var User = require('../models/User.js');
 
 module.exports = {
 	addUser: function(req, res) {
@@ -48,6 +48,14 @@ module.exports = {
 			}
 		})
 	}
+,	updateUserWithValveId: function(req, res) {
+		User.findByIdAndUpdate(req.query._id, {$push: {valves: req.body._id}}, function(err, result){
+			if(err) res.status(500).send(err);
+			else{
+				res.send(result);
+			}
+		});
+}
 ,	deleteUser: function(req, res) {
 		User.findByIdAndRemove(req.query.id, function(err, result) {
 			if (err) {

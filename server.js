@@ -17,6 +17,7 @@ var express = require('express')
 ,	router = require('./routes/users.js')
 ,	schedule = require('node-schedule')
 ,	twilioSecret = require('./js/twilioSecret.js')
+	,needle = require('needle')
 ,	client = require('twilio')(twilioSecret.clientId, twilioSecret.clientAuth)	
 ,	app = express();
 
@@ -98,7 +99,8 @@ app.delete('/api/user', UserCtrl.deleteUser);
 app.get('/api/user/authenticated', function(req, res) {
 	console.log(req.user);
 	res.send(req.user);
-})
+});
+app.put('/api/user/update', UserCtrl.updateUserWithValveId);
 //VALVES//
 app.post('/api/valve', ValveCtrl.addValve);
 app.get('/api/valves', ValveCtrl.getValves);
@@ -127,6 +129,20 @@ app.get('/api/history/user', HistoryCtrl.getUserHistory);
 // 		console.log(message);
 // 	}
 // });
+needle
+	.post('http://10.0.0.111', {valveID: 1, valveDrive: 'open'}, { multipart: true }, function(err, resp, body) {
+	if (err) {
+	  console.log(err);
+	} else {
+	  if(resp)  {
+	    console.log(resp);
+		console.log(body);
+	  }
+	}
+})
+	.on('end', function() {
+	  console.log('Ready-o, friend-o.');
+	})
 
 
 
