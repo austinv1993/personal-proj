@@ -130,7 +130,7 @@ app.get('/api/history/user', HistoryCtrl.getUserHistory);
 // 	}
 // });
 needle
-	.post('http://10.0.0.111', {valveID: 1, valveDrive: 'open'}, { multipart: true }, function(err, resp, body) {
+	.post('http://10.0.0.111', {valveNum: 1, valveDrive: 'open'}, { multipart: true }, function(err, resp, body) {
 	if (err) {
 	  console.log(err);
 	} else {
