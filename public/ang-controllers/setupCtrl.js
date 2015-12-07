@@ -3,8 +3,9 @@ angular.module('app')
 	
 	
 	$scope.createNewValve = function() {
+		$scope.updateUserWithValveId();
 		$scope.valve.userId = $scope.authenticatedUser._id;
-		// $scope.valve.valveNumber = 
+		$scope.valve.valveNumber = valveNum;
 		valveService.createNewValve($scope.valve);
 	}
 	$scope.getCurrentUser = function() {
@@ -12,5 +13,14 @@ angular.module('app')
 			$scope.authenticatedUser = userObject;	
 		})
 	}
+	var valveNum;
 	$scope.getCurrentUser();
+	$scope.assignValveNum = function(userObj) {
+		valveNum = $scope.authenticatedUser.valves.length + 1;
+	}
+	$scope.updateUserWithValveId = function(userObj) {
+		valveService.updateUserWithValveId(userObj).then(function() {
+			
+		})
+	}
 })

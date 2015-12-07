@@ -50,5 +50,10 @@ angular.module('app')
 			return response.data
 		})
 	}
+	this.updateUserWithValveId = function(userObj, valveId) {
+		return $http.put('/api/user/update?_id=' + userObj._Id).then(function(response) {
+			return response.data;
+		})
+	}
 	
 });

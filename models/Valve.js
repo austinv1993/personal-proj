@@ -7,6 +7,7 @@ var Valve = new mongoose.Schema({
 ,	timeClose: {type: Date, required: true}
 ,	userId: {type: String, required: true}
 ,	status: {type: String, default: 'Pending'}
+,	valveNumber: Number
 })
 
 module.exports = mongoose.model('Valve', Valve)
