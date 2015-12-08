@@ -106,6 +106,7 @@ app.post('/api/valve', ValveCtrl.addValve);
 app.get('/api/valves', ValveCtrl.getValves);
 app.get('/api/valve', ValveCtrl.getValve);
 app.put('/api/valves', ValveCtrl.updateValve);
+app.put('/api/valves/status', ValveCtrl.updateValveStatus);
 
 //AUTH//
 app.get('/api/user/authenticated', function(req, res) {

@@ -74,6 +74,14 @@ module.exports = {
 				res.send(result);
 			}
 		})
+	},
+	updateValveStatus: function(req, res) {
+		Valve.findOneAndUpdate({user_id: req.body.user_id, valveNum: req.body.valveNum}, {$set: {status: req.body.status}}, function(err, result) {
+			if (err) res.status(500).send(err);
+			else {
+				res.send(result)
+			}
+		})
 	}
 ,	deleteValve: function(req, res) {
 		Valve.findByIdAndRemove(req.query.id, function(err, result) {
