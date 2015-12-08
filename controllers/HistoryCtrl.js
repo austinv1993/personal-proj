@@ -1,4 +1,4 @@
-var History = require('../models/History.js')
+var History = require('../models/History.js');
 
 module.exports = {
 	addHistory: function(req, res) {

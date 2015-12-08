@@ -1,4 +1,5 @@
 var Valve = require('../models/Valve.js');
+var History = require('../models/History.js');
 var schedule = require('node-schedule');
 var http = require('http');
 var needle = require('needle');
@@ -79,7 +80,20 @@ module.exports = {
 		Valve.findOneAndUpdate({user_id: req.body.user_id, valveNum: req.body.valveNum}, {$set: {status: req.body.status}}, function(err, result) {
 			if (err) res.status(500).send(err);
 			else {
-				res.send(result)
+				console.log(result);
+				Valve.findById(result._id, function(err, valve) {
+					if(err) res.status(500).send(err);
+					else {
+						console.log(valve);
+						History.findOneAndUpdate({user: valve.user_id}, {$push: {settings: valve}}, function(err, response) {
+							if(err) res.status(500).send(err);
+							else {
+								res.send(response);
+							}
+					
+						})
+					}
+				})
 			}
 		})
 	}
