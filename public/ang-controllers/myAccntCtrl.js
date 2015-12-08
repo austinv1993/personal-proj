@@ -1,8 +1,8 @@
 angular.module('app')
-.controller('myAccntCtrl', function($scope, $state, valveService) {
+.controller('myAccntCtrl', function($scope, $state, valveService, userService) {
 
 	$scope.getCurrentUser = function() {
-		valveService.getCurrentUser().then(function(user) {
+		userService.getCurrentUser().then(function(user) {
 			$scope.authenticatedUser = user;
 			valveService.getValves(user).then(function(valveArray) {
 				// for (var i = 0; i < valveArray.length; i++) {

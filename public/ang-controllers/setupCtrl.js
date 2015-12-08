@@ -1,39 +1,33 @@
 angular.module('app')
-.controller('setupCtrl', function($scope, $http, valveService) {
+.controller('setupCtrl', function($scope, $http, valveService, userService, $q) {
 	
 	
 	$scope.createNewValve = function() {
-		$scope.valve.userId = $scope.authenticatedUser._id;
+		$scope.valve.user_id = $scope.authenticatedUser._id;
+		$scope.valve.valveNum = valveNum;
 		valveService.createNewValve($scope.valve)
 			.then(function(response) {
-				$scope.updateUserWithValveId($scope.authenticatedUser, response)
-					.then(function() {
-						$scope.getCurrentUser()
-							.then(function() {
-								$scope.getCurrentUser()
-									.then(function() {
-										$scope.assignValveNum()
-											.then(function() {
-												response.valveNumber = valveNum;
-												valveService.updateValve(response);
-											})
-									})
-							})
-			})
+				userService.updateUserWithValveId($scope.authenticatedUser, response);
 		})
 	}
 	$scope.getCurrentUser = function() {
-		valveService.getCurrentUser().then(function(userObject) {
-			$scope.authenticatedUser = userObject;	
+		var deferred = $q.defer();
+		userService.getCurrentUser().then(function(userObject) {
+			$scope.authenticatedUser = userObject;
+			deferred.resolve();	
 		})
+		return deferred.promise
 	}
-	$scope.getCurrentUser();
 	
 	var valveNum;
 	$scope.assignValveNum = function(userObj) {
 		valveNum = $scope.authenticatedUser.valves.length + 1;
+		console.log(valveNum);
 	}
 	$scope.updateUserWithValveId = function(userObj) {
 		valveService.updateUserWithValveId(userObj);
 	}
+	$scope.getCurrentUser().then(function() {
+		$scope.assignValveNum();
+	})
 })

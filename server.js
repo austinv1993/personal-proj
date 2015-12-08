@@ -129,21 +129,21 @@ app.get('/api/history/user', HistoryCtrl.getUserHistory);
 // 		console.log(message);
 // 	}
 // });
-needle
-	.post('http://50.160.68.183:3000', {valveNum: 1, valveDrive: 'open'}, { multipart: true }, function(err, resp, body) {
-	if (err) {
-	  console.log(err);
-	} else {
-	  console.log("no errors");
-	  if(resp)  {
-	    console.log(resp);
-		console.log(body);
-	  }
-	}
-})
-	.on('end', function() {
-	  console.log('Ready-o, friend-o.');
-	})
+// needle
+// 	.post('http://50.160.68.183:3000', {valveNum: 1, valveDrive: 'open'}, { multipart: true }, function(err, resp, body) {
+// 	if (err) {
+// 	  console.log(err);
+// 	} else {
+// 	  console.log("no errors");
+// 	  if(resp)  {
+// 	    console.log(resp);
+// 		console.log(body);
+// 	  }
+// 	}
+// })
+// 	.on('end', function() {
+// 	  console.log('Ready-o, friend-o.');
+// 	})
 
 
 
