@@ -47,7 +47,7 @@ module.exports = {
 		})
 	}
 ,	getValves: function(req, res) {
-		Valve.find({userId: req.query.userId}, function(err, valves) {
+		Valve.find({user_id: req.query.userId}, function(err, valves) {
 			if (err) res.send(err);
 			else res.send(valves)
 		})

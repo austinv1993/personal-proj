@@ -9,16 +9,16 @@ angular.module('app', ['ui.router'])
 				// controller: 'loginCtrl',
 				templateUrl: './views/login.html'
 		})
-		.state('setup', {
-				url: '/setup',
-				controller: 'setupCtrl',
-				templateUrl: './views/setup.html'
+		.state('add', {
+				url: '/addValve',
+				controller: 'addValveCtrl',
+				templateUrl: './views/addValve.html'
 				// resolve: {user: getAuth}
 		})
-		.state('myAccnt', {
-				url: '/account',
-				controller: 'myAccntCtrl',
-				templateUrl: './views/accnt.html'
+		.state('myValves', {
+				url: '/valves',
+				controller: 'myValvesCtrl',
+				templateUrl: './views/myValves.html'
 		})
 		.state('update', {
 				url: '/update/:valveId',

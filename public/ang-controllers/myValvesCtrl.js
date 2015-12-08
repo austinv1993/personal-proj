@@ -1,14 +1,10 @@
 angular.module('app')
-.controller('myAccntCtrl', function($scope, $state, valveService, userService) {
+.controller('myValvesCtrl', function($scope, $state, valveService, userService) {
 
 	$scope.getCurrentUser = function() {
 		userService.getCurrentUser().then(function(user) {
 			$scope.authenticatedUser = user;
 			valveService.getValves(user).then(function(valveArray) {
-				// for (var i = 0; i < valveArray.length; i++) {
-				// 	valveArray[i].timeOpen = new Date(valveArray[i].timeOpen)
-				// 	valveArray[i].timeClose = new Date(valveArray[i].timeClose)
-				// }
 				$scope.valves = valveArray;
 			})
 		})

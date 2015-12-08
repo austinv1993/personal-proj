@@ -4,6 +4,7 @@ angular.module('app')
 	this.getValves = function(userObject) {
 		return $http.get('/api/valves?userId=' + userObject._id)
 			.then(function(result) {
+				console.log(result.data);
 				return result.data
 			})
 	}

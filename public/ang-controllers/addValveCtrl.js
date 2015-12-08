@@ -1,5 +1,5 @@
 angular.module('app')
-.controller('setupCtrl', function($scope, $http, valveService, userService, $q) {
+.controller('addValveCtrl', function($scope, $http, valveService, userService, $q) {
 	
 	
 	$scope.createNewValve = function() {

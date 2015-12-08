@@ -80,7 +80,7 @@ passport.deserializeUser(function(user, done) {
 
 app.route('/auth/google/callback')
 	.get(passport.authenticate('google', {
-		successRedirect: '/#/account',
+		successRedirect: '/#/valves',
 		failureRedirect: '/error'
 	}));
 
