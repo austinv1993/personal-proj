@@ -1,6 +1,6 @@
 <div class="container">
   <div class="page-header">
-    <h1>ValveMotorControl</h1>
+    <h1>Irrigation Valve Automation</h1>
 	<div>My Current Valves</div>
   </div>
   <button ui-sref="add">Add New Valve</button> <!--switches user to setup state-->
@@ -14,8 +14,8 @@
 	<div>Time Close: {{valve.timeClose| date:"MM/dd/yyyy 'at' h:mma"}}</div>
 	<div>Status: {{valve.status}}</div>
 	<button ng-click="editValve(valve._id)">Edit Valve</button>
-	<a class="pointer" ng-click="setCompleteOrFail(valve, 'Successful')">Set status: Successful</a> - 
-	<a class="pointer" ng-click="setCompleteOrFail(valve, 'Failed')">Set status: Failed</a>
+	<!--<a class="pointer" ng-click="setCompleteOrFail(valve, 'Successful')">Set status: Successful</a> - 
+	<a class="pointer" ng-click="setCompleteOrFail(valve, 'Failed')">Set status: Failed</a>-->
 	</ul>
 	
 </div>

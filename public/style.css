@@ -1,23 +1,47 @@
 html, body {
 	height: 100%;
+	/*background-color: #b3ffff !important;*/
 }
 .pointer {
 	cursor: pointer;
 }
-.signinholder {
+.signin {
+    text-decoration: none !important;
+}​
+.his-table {
 	text-align: center;
 }
-.signin {
-    
-    -webkit-appearance: button;
-    
-	color: black;
-	/*background-color: grey;*/
-	width: 30%;
-	height: 100px;
+.background-container {
+	width: 100%;
+	height: 100%;
+	background-image: url('http://img12.deviantart.net/62fd/i/2012/095/4/c/glendale_arizona_irrigation_field_by_2wheeldigitalworks-d4v2fk8.jpg');
+	background-size: cover;
+	overflow: auto;
+}
+.text-container {
+	background: rgba(255, 255, 255, .8);
+	border-radius: 8px;
+	
+}
+.call-to-action {
+	/*margin-top: 125px;*/
+	/*margin-left: 45px;*/
+	width: 275px;
+	margin: 125px auto;
+	color: orange;
+}
+.sign-in-button {
+	display: inline-block;
+	width: 275px;
+	height: 55px;
+	background-color: #337ab7;
+	color: white;
+	border-radius: 8px;
+	/*margin-left: 45px;*/
 	text-align: center;
-	margin: auto 0;
-	border-radius: 20px;
-	padding-top: 40px;
-	text-decoration: none !important;
-}​
+	line-height: 55px;
+}
+.sign-in-button:hover {
+	background-color: orange;
+	font-weight: bold;
+}

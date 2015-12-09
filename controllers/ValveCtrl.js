@@ -11,7 +11,7 @@ module.exports = {
 			if (err) {
 				res.send(err);
 			} else {
-				var dateOn = new Date(req.body.timeOpen)
+				var dateOn = new Date(req.body.timeOpen);
 				schedule.scheduleJob(dateOn, function() {
 					console.log(dateOn);
 					console.log(thisValve);
@@ -28,7 +28,7 @@ module.exports = {
 							console.log('Ready-o, friend-o.');
 						})
 				})
-				var dateOff = new Date(req.body.timeClose)
+				var dateOff = new Date(req.body.timeClose);
 				schedule.scheduleJob(dateOff, function() {
 					console.log(dateOff);
 					needle

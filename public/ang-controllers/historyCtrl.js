@@ -1,14 +1,14 @@
 angular.module('app')
-.controller('historyCtrl', function($scope, valveService) {
+.controller('historyCtrl', function($scope, valveService, userService) {
 	
-	$scope.getCurrentUser = function() {
-		valveService.getCurrentUser().then(function(userObj) {
-			valveService.getUserHistory(userObj._id).then(function(userHistory) {
+	$scope.getCurrentUserHistory = function() {
+		userService.getCurrentUser().then(function(userObj) {
+			userService.getUserHistory(userObj._id).then(function(userHistory) {
 				$scope.userHistory = userHistory;
 			})
 		})
 	}
-	$scope.getCurrentUser();
+	$scope.getCurrentUserHistory();
 	
 	
 	

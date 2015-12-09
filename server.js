@@ -17,9 +17,10 @@ var express = require('express')
 ,	router = require('./routes/users.js')
 ,	schedule = require('node-schedule')
 ,	twilioSecret = require('./js/twilioSecret.js')
-	,needle = require('needle')
+,	needle = require('needle')
 ,	client = require('twilio')(twilioSecret.clientId, twilioSecret.clientAuth)	
 ,	app = express();
+// ,	rest = require('arest')(app);
 
 passport.use(new GoogleStrategy({
 	clientID: secret.clientID,
@@ -88,8 +89,8 @@ app.route('/auth/google')
 	.get(passport.authenticate('google', {
 		scope: ['https://www.googleapis.com/auth/userinfo.profile', 'https://www.googleapis.com/auth/userinfo.email']
 	}));
-//NODE SCHEDULE JOBS/
-app.post('/api/newjob', NSCtrl.newNodeJob); //NOT IN USE
+//ARDUINO//
+// rest.addDevice('http','192.168.1.103'); //NEED TO PUT IN CORRECT IP ADDRESS
 
 
 //USER//

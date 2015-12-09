@@ -1,9 +1,9 @@
 <div class="container">
   <div class="page-header">
-    <h1>ValveMotorControl</h1>
+    <h1>Irrigation Valve Automation</h1>
     <div>Edit Valve</div>
   </div>
-  <button ui-sref="account">My Account</button>
+  <button ui-sref="myValves">My Current Valves</button>
 
 <form action="">
   <p>Valve Name: {{valve.valveName}}</p>
@@ -13,5 +13,5 @@
   <input ng-model="valve.timeClose" type="datetime-local">
   <input ng-click="updateValve(valve)" type="submit">
 </form>
-<button ui-sref="myAccnt" >Back to Account Page</button>
+<!--<button ui-sref="myValves" >Back to Account Page</button>-->
 </div>
