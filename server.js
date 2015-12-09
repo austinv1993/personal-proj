@@ -81,7 +81,8 @@ passport.deserializeUser(function(user, done) {
 
 app.route('/auth/google/callback')
 	.get(passport.authenticate('google', {
-		successRedirect: '/#/valves',
+		successRedirect: 'http://107.170.234.129:3000/#/valves',
+		// successRedirect: '/#/valves',
 		failureRedirect: '/error'
 	}));
 
