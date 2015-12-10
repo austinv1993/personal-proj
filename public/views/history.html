@@ -1,13 +1,17 @@
 <div class="container">
-	<div class="page-header">
-		<h1>Irrigation Valve Automation</h1>
-		<p>My History</p>
+	<div class="background-header">
+		<div>
+			<h1>Irrigation Valve Automation</h1>
+		</div>
 	</div>
-	<button ui-sref="myValves">My Account</button>
-	<hr>
-	
+	<ul class="nav nav-pills nav-stacked float-left col-md-2">
+		<li ui-sref="myValves" class="btn btn-primary">My Current Valves</li>
+		<li ui-sref="add" class="btn btn-primary">Add New Valve</li>
+	</ul>
+	<br>
 
-	<div ng-repeat="valveSnap in userHistory.settings">
+
+	<!--<div ng-repeat="valveSnap in userHistory.settings">
 
 		<div class="well">
 			<p>
@@ -15,16 +19,64 @@
 				<div>Time Opened: {{valveSnap.timeOpen | date:"MM/dd/yyyy 'at' h:mma"}}</div>
 				<div>Time Closed: {{valveSnap.timeClose| date:"MM/dd/yyyy 'at' h:mma"}}</div>
 				<div>Status: {{valveSnap.status}}</div>
-			</p>		
+			</p>
 		</div>
 		<hr>
-	</div>
-	<table class="table his-table">
-		<div class="col-md-4">test</div>
-		<div class="col-md-4">test</div>
-		<div class="col-md-4">test</div>
+	</div>-->
+	<table class="table-bordered">
+		<!--<h3>My History</h3>-->
+		<div class="col-md-2">
+			<label>Date</label>
+			<hr>
+			<div ng-repeat="valveSnap in userHistory.settings">
+				<div>
+					{{valveSnap.timeOpen | date:"MM/dd/yyyy"}}
+				</div>
+				<hr>
+			</div>
+		</div>
+		<div class="col-md-2">
+			<label>Valve Name</label>
+			<hr>
+			<div ng-repeat="valveSnap in userHistory.settings">
+				<div>
+					{{valveSnap.valveName}}
+				</div>
+				<hr>
+			</div>
+		</div>
+		<div class="col-md-2">
+			<label>Time Opened</label>
+			<hr>
+			<div ng-repeat="valveSnap in userHistory.settings">
+				<div>
+					{{valveSnap.timeOpen | date:"h:mma"}}
+				</div>
+				<hr>
+			</div>
+		</div>
+		<div class="col-md-2">
+			<label>Time Closed</label>
+			<hr>
+			<div ng-repeat="valveSnap in userHistory.settings">
+				<div>
+					{{valveSnap.timeClose | date:"h:mma"}}
+				</div>
+				<hr>
+			</div>
+		</div>
+		<div class="col-md-2">
+			<label>Status</label>
+			<hr>
+			<div ng-repeat="valveSnap in userHistory.settings">
+				<div>
+					{{valveSnap.status}}
+				</div>
+				<hr>
+			</div>
+		</div>
 	</table>
-	
+
 
 
 

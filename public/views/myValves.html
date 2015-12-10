@@ -1,23 +1,39 @@
-<div class="container">
-  <div class="page-header">
-    <h1>Irrigation Valve Automation</h1>
-	<div>My Current Valves</div>
-  </div>
-  <button ui-sref="add">Add New Valve</button> <!--switches user to setup state-->
-  <button ui-sref="history">My History</button>
-  <hr>
-<div ng-repeat="valve in valves">
-	<ul class="well">
-	<div>Valve Name: {{valve.valveName}}</div>
-	<div>Relative Location: {{valve.relativeLocation}}</div>
-	<div>Time Open: {{valve.timeOpen | date:"MM/dd/yyyy 'at' h:mma"}}</div>
-	<div>Time Close: {{valve.timeClose| date:"MM/dd/yyyy 'at' h:mma"}}</div>
-	<div>Status: {{valve.status}}</div>
-	<button ng-click="editValve(valve._id)">Edit Valve</button>
-	<!--<a class="pointer" ng-click="setCompleteOrFail(valve, 'Successful')">Set status: Successful</a> - 
+<div class="background-container-myvalves">
+	<div class="container">
+		<div class="background-header">
+			<div>
+				<h1>Irrigation Valve Automation</h1>
+			</div>
+		</div>
+		<ul class="nav nav-pills nav-stacked float-left col-md-2">
+			<li ui-sref="add" class="btn btn-primary">Add A New Valve</li>
+			<li ui-sref="history" class="btn btn-primary">My History</li>
+		</ul>
+		<div class="col-md-4">
+			<h3>Current:</h3>
+			<div ng-repeat="valve in valves">
+				<ul class="col-md-12 well">
+					<div>
+						<label>Valve Name:</label> {{valve.valveName}}</div>
+					<div ng-show="valve.relativeLocation">
+						<label>Relative Location:</label> {{valve.relativeLocation}}</div>
+					<div>
+						<label>Time Open:</label> {{valve.timeOpen | date:"MM/dd/yyyy 'at' h:mma"}}</div>
+					<div>
+						<label>Time Close:</label> {{valve.timeClose| date:"MM/dd/yyyy 'at' h:mma"}}</div>
+					<div>
+						<label>Status:</label> {{valve.status}}</div>
+					<button class="btn btn-warning float-right" ng-click="editValve(valve._id)">Edit This Valve</button>
+					<!--<a class="pointer" ng-click="setCompleteOrFail(valve, 'Successful')">Set status: Successful</a> - 
 	<a class="pointer" ng-click="setCompleteOrFail(valve, 'Failed')">Set status: Failed</a>-->
-	</ul>
-	
-</div>
+				</ul>
 
+			</div>
+		</div>
+		<div class="col-md-4">
+			<h3>Expired:</h3>
+			
+		</div>
+
+	</div>
 </div>

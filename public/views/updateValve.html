@@ -1,17 +1,31 @@
 <div class="container">
-  <div class="page-header">
-    <h1>Irrigation Valve Automation</h1>
-    <div>Edit Valve</div>
+  <div class="background-header">
+    <div>
+      <h1>Irrigation Valve Automation</h1>
+    </div>
   </div>
-  <button ui-sref="myValves">My Current Valves</button>
+  <ul class="nav nav-pills nav-stacked float-left col-md-2">
+    <li ui-sref="myValves" class="btn btn-primary">My Current Valves</li>
+    <li ui-sref="add" class="btn btn-primary">Add A New Valve</li>
+    <li ui-sref="history" class="btn btn-primary">My History</li>
+  </ul>
 
-<form action="">
-  <p>Valve Name: {{valve.valveName}}</p>
-  <p>Time on</p>
-  <input ng-model="valve.timeOpen" type="datetime-local">
-  <p>Time off</p>
-  <input ng-model="valve.timeClose" type="datetime-local">
-  <input ng-click="updateValve(valve)" type="submit">
-</form>
-<!--<button ui-sref="myValves" >Back to Account Page</button>-->
+  <form class="col-md-4 well">
+    <div class="col-md-9">
+      <h3>Update This Valve</h3>
+      <label>Valve Name:</label> {{valve.valveName}}
+      <br>
+      <label>Time on:</label>
+      <br>
+      <input class="form-control" ng-model="valve.timeOpen" type="datetime-local">
+      <br>
+      <label>Time off:</label>
+      <br>
+      <input class="form-control" ng-model="valve.timeClose" type="datetime-local">
+      <br>
+      <input class="btn btn-warning float-right" ng-click="updateValve(valve)" type="submit">
+    </div>
+    <div ng-show="true"class="col-md-3 orange-text margin-top"><h4>Valve updated!</h4></div>
+  </form>
+  <!--<button ui-sref="myValves" >Back to Account Page</button>-->
 </div>

@@ -9,7 +9,15 @@ angular.module('app')
 			.then(function(response) {
 				userService.updateUserWithValveId($scope.authenticatedUser, response);
 		})
+		$scope.valve.valveName = "";
+		$scope.valve.relativeLocation = "";
+		$scope.valve.timeOpen = "";
+		$scope.valve.timeClose = "";
+		$scope.notShow = true;
 	}
+	// if ($scope.notShow) {
+	// 	$scope.notShow = false;
+	// }
 	$scope.getCurrentUser = function() {
 		var deferred = $q.defer();
 		userService.getCurrentUser().then(function(userObject) {

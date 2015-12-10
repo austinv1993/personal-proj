@@ -4,8 +4,8 @@ var express = require('express')
 ,	bodyParser = require('body-parser')
 ,	port = 3000
 ,	secret = require('./js/secret.js')
-// ,	mongooseUri = "mongodb://localhost:27017/irrigation-motor-control"
-,	mongooseUri = secret.mongooseUri
+,	mongooseUri = "mongodb://localhost:27017/irrigation-motor-control"
+// ,	mongooseUri = secret.mongooseUri
 ,	UserCtrl = require('./controllers/UserCtrl.js')
 ,	ValveCtrl = require('./controllers/ValveCtrl.js')
 ,	HistoryCtrl = require('./controllers/HistoryCtrl.js')
@@ -82,8 +82,8 @@ passport.deserializeUser(function(user, done) {
 
 app.route('/auth/google/callback')
 	.get(passport.authenticate('google', {
-		successRedirect: 'http://107.170.234.129:3000/#/valves',
-		// successRedirect: '/#/valves',
+		// successRedirect: 'http://107.170.234.129:3000/#/valves',
+		successRedirect: '/#/valves',
 		failureRedirect: '/error'
 	}));
 
