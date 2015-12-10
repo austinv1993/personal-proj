@@ -5,7 +5,16 @@ angular.module('app')
 		userService.getCurrentUser().then(function(user) {
 			$scope.authenticatedUser = user;
 			valveService.getValves(user).then(function(valveArray) {
-				$scope.valves = valveArray;
+				$scope.valvesCurrent = [];
+				$scope.valvesExpired = [];
+				for (var i = 0; i < valveArray.length; i++) {
+					if (valveArray[i].status === 'Pending') {
+						$scope.valvesCurrent.push(valveArray[i]);
+					}
+					else {
+						$scope.valvesExpired.push(valveArray[i])
+					}
+				}
 			})
 		})
 	}

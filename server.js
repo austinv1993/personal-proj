@@ -9,6 +9,7 @@ var express = require('express')
 ,	UserCtrl = require('./controllers/UserCtrl.js')
 ,	ValveCtrl = require('./controllers/ValveCtrl.js')
 ,	HistoryCtrl = require('./controllers/HistoryCtrl.js')
+,	History = require('./models/History.js')
 ,	NSCtrl = require('./controllers/NSCtrl.js')
 ,	passport = require('passport')
 ,	session = require('express-session')
@@ -34,7 +35,7 @@ passport.use(new GoogleStrategy({
            User.findOne(query, function (error, user) {
 
                if (user) {
-                   console.log('Google user found in database: ', user);
+                //    console.log('Google user found in database: ', user);
                    done(null, user);
                }
                else {
@@ -43,14 +44,20 @@ passport.use(new GoogleStrategy({
                    user.email = profile.emails[0].value;
                    user.image = profile._json.image.url;
                    user.displayName = profile.displayName;
-
                    user.google = {};
                    user.google.id = profile.id;
                    user.google.token = accessToken;
 
-                   console.log('new user created: ', user);
-
-                   user.save();
+                //    console.log('new user created: ', user);
+                   user.save().then(function(response) {
+					//    console.log('this is the response from user.save()', response)
+					   new History({user: response._id}).save(function(err, result) {
+						   if (err) console.log(err);
+						   else {
+							   console.log('History successfuly created for', response.displayName);
+						   }
+					   })
+				   })
                    done(null, user);
                }
            });

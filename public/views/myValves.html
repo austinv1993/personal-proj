@@ -11,28 +11,45 @@
 		</ul>
 		<div class="col-md-4">
 			<h3>Current:</h3>
-			<div ng-repeat="valve in valves">
+			<div ng-repeat="valve in valvesCurrent">
 				<ul class="col-md-12 well">
 					<div>
 						<label>Valve Name:</label> {{valve.valveName}}</div>
 					<div ng-show="valve.relativeLocation">
 						<label>Relative Location:</label> {{valve.relativeLocation}}</div>
 					<div>
-						<label>Time Open:</label> {{valve.timeOpen | date:"MM/dd/yyyy 'at' h:mma"}}</div>
+						<label>Scheduled Open:</label> {{valve.timeOpen | date:"MM/dd/yyyy 'at' h:mma"}}</div>
 					<div>
-						<label>Time Close:</label> {{valve.timeClose| date:"MM/dd/yyyy 'at' h:mma"}}</div>
+						<label>Scheduled Close:</label> {{valve.timeClose| date:"MM/dd/yyyy 'at' h:mma"}}</div>
 					<div>
 						<label>Status:</label> {{valve.status}}</div>
 					<button class="btn btn-warning float-right" ng-click="editValve(valve._id)">Edit This Valve</button>
 					<!--<a class="pointer" ng-click="setCompleteOrFail(valve, 'Successful')">Set status: Successful</a> - 
-	<a class="pointer" ng-click="setCompleteOrFail(valve, 'Failed')">Set status: Failed</a>-->
+					<a class="pointer" ng-click="setCompleteOrFail(valve, 'Failed')">Set status: Failed</a>-->
 				</ul>
 
 			</div>
 		</div>
 		<div class="col-md-4">
 			<h3>Expired:</h3>
-			
+			<div ng-repeat="valve in valvesExpired">
+				<ul class="col-md-12 well">
+					<div>
+						<label>Valve Name:</label> {{valve.valveName}}</div>
+					<div ng-show="valve.relativeLocation">
+						<label>Relative Location:</label> {{valve.relativeLocation}}</div>
+					<div>
+						<label>Time Opened:</label> {{valve.timeOpen | date:"MM/dd/yyyy 'at' h:mma"}}</div>
+					<div>
+						<label>Time Closed:</label> {{valve.timeClose| date:"MM/dd/yyyy 'at' h:mma"}}</div>
+					<div>
+						<label>Status:</label> {{valve.status}}</div>
+					<button class="btn btn-warning float-right" ng-click="editValve(valve._id)">Update This Valve</button>
+					<!--<a class="pointer" ng-click="setCompleteOrFail(valve, 'Successful')">Set status: Successful</a> - 
+					<a class="pointer" ng-click="setCompleteOrFail(valve, 'Failed')">Set status: Failed</a>-->
+				</ul>
+
+			</div>
 		</div>
 
 	</div>

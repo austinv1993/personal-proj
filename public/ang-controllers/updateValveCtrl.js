@@ -13,7 +13,7 @@ angular.module('app')
 		valveService.updateValve(valve).then(function(valve) {
 			$scope.updatedValve = valve;
 			toastr.options.positionClass = 'toast-top-right'; 
-			toastr.info('Valve created!');
+			toastr.info('Valve updated!');
 		})
 	}
 	$scope.routeToAccnt = function() {
