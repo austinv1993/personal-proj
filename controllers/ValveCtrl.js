@@ -54,7 +54,6 @@ module.exports = {
 		})
 	}
 ,	getValve: function(req, res) {
-		
 		Valve.findById(req.query.valveId, function(err, valve) {
 			if (err) {
 				console.log(err);
@@ -65,14 +64,45 @@ module.exports = {
 			}
 		})
 }
-
 ,	updateValve: function(req, res) {
 		Valve.findByIdAndUpdate(req.query.id, req.body, function(err, result) {
 			if (err) {
 				res.status(500).send(err);
 			} else {
-				
 				res.send(result);
+				Valve.findById(result._id, function(err, valve) {
+					if (err) res.status(500).send(err);
+					else {
+						
+						var dateOn = new Date(valve.timeOpen);
+						schedule.scheduleJob(dateOn, function() {
+							console.log(dateOn);
+							// console.log(thisValve);
+							needle
+								.post('http://10.0.0.111', {valveID: valve._id, valveDrive: 'open'}, { multipart: true }, function(err, resp, body) {
+									if (err) {
+										console.log(err);
+									} else {
+										if(resp) console.log(resp);
+										console.log(body);
+									}
+								})
+						})
+						var dateOff = new Date(valve.timeClose);
+						schedule.scheduleJob(dateOff, function() {
+							console.log(dateOff);
+							needle
+								.post('http://10.0.0.111', {valveID: valve._id, valveDrive: 'close'}, { multipart: true }, function(err, resp, body) {
+									if (err) console.log(err);
+									else {
+										if (resp) console.log(resp);
+										console.log(body);
+									}
+								})
+						})
+						res.send(valve);
+					}
+				})
 			}
 		})
 	},
@@ -90,7 +120,6 @@ module.exports = {
 							else {
 								res.send(response);
 							}
-					
 						})
 					}
 				})
