@@ -31,6 +31,7 @@ angular.module('app', ['ui.router'])
 				templateUrl: './views/history.html'
 		})
 })
+.constant('toastr', window.toastr);
 
 
 // function getAuth($http, $location) {

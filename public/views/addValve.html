@@ -1,7 +1,7 @@
 <div class="container">
   <div class="background-header">
     <div>
-      <h1>Irrigation Valve Automation</h1>
+      <h1 class="in-line">Irrigation Valve Automation</h1><img class="logo" src="../images/drawing.png">
     </div>
   </div>
 
@@ -26,6 +26,5 @@
       <input class="form-control" ng-model="valve.timeClose" type="datetime-local">
       <input class="btn btn-warning float-right" ng-click="createNewValve()" type="submit">
     </div>
-    <div ng-show="notShow"class="col-md-4 orange-text"><h4>Valve created!</h4></div>
-  </form>{{ authenticatedUser.data._id }}
+  </form>
 </div>

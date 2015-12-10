@@ -1,6 +1,5 @@
 angular.module('app')
-.controller('addValveCtrl', function($scope, $http, valveService, userService, $q) {
-	
+.controller('addValveCtrl', function($scope, $http, valveService, userService, $q, toastr) {
 	
 	$scope.createNewValve = function() {
 		$scope.valve.user_id = $scope.authenticatedUser._id;
@@ -8,16 +7,16 @@ angular.module('app')
 		valveService.createNewValve($scope.valve)
 			.then(function(response) {
 				userService.updateUserWithValveId($scope.authenticatedUser, response);
+				toastr.options.positionClass = 'toast-top-right'; 
+				toastr.info('Valve created!');
+				$scope.valve.valveName = "";
+				$scope.valve.relativeLocation = "";
+				$scope.valve.timeOpen = "";
+				$scope.valve.timeClose = "";
 		})
-		$scope.valve.valveName = "";
-		$scope.valve.relativeLocation = "";
-		$scope.valve.timeOpen = "";
-		$scope.valve.timeClose = "";
-		$scope.notShow = true;
+		
+		
 	}
-	// if ($scope.notShow) {
-	// 	$scope.notShow = false;
-	// }
 	$scope.getCurrentUser = function() {
 		var deferred = $q.defer();
 		userService.getCurrentUser().then(function(userObject) {

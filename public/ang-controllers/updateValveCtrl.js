@@ -1,5 +1,5 @@
 angular.module('app')
-.controller('updateValveCtrl', function($scope, $stateParams, valveService, $state) {
+.controller('updateValveCtrl', function($scope, $stateParams, valveService, $state, toastr) {
 	
 	var getValve = function(valveId) {
 		valveService.getValve(valveId).then(function(valve) {
@@ -12,6 +12,8 @@ angular.module('app')
 	$scope.updateValve = function(valve) {
 		valveService.updateValve(valve).then(function(valve) {
 			$scope.updatedValve = valve;
+			toastr.options.positionClass = 'toast-top-right'; 
+			toastr.info('Valve created!');
 		})
 	}
 	$scope.routeToAccnt = function() {

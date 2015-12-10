@@ -5,6 +5,9 @@ html, body {
 .pointer {
 	cursor: pointer;
 }
+h1 {
+	font-style: italic;
+}
 .signin {
     text-decoration: none !important;
 }​
@@ -14,6 +17,15 @@ html, body {
 /*.history-table {
 	margin-top: 300px;
 }*/
+.logo {
+	height: 50px;
+	width: 45px;
+	margin-left: 20px;
+	margin-bottom: 30px;
+}
+.in-line {
+	display: inline-block;
+}
 .blue {
 	/*background-color: #245580;*/
 	border-radius: 8px;
