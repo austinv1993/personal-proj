@@ -29,7 +29,7 @@ passport.use(new GoogleStrategy({
 	clientID: secret.clientID,
 	clientSecret: secret.clientSecret,
 	// callbackURL: 'http://localhost:3000/auth/google/callback' 
-	callbackURL: 'http://107.170.234.129:3000/auth/google/callback' //HOSTED
+	callbackURL: 'http://www.ivalveauto.com/auth/google/callback' //HOSTED
 },
 	function(req, accessToken, refreshToken, profile, done){
 		var query = { 'google.id': profile.id };
