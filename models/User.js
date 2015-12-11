@@ -7,6 +7,7 @@ var User = new mongoose.Schema({
 ,	email: {type: String, required: true}
 ,	dateCreated: {type: Date, default: new Date()}
 ,	valves: [{type: mongoose.Schema.Types.ObjectId, ref: 'Valve'}]
+,	ipAddress: String
 })
 
 module.exports = mongoose.model('User', User)

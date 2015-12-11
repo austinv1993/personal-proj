@@ -19,6 +19,12 @@ angular.module('app')
 				return response.data;
 		})
 	}
+	this.updateUserWithIp = function(user) {
+		return $http.put('/api/user/addip', user).then(function(response) {
+			console.log(response);
+			return response.data;
+		})
+	}
 	
 	
 })

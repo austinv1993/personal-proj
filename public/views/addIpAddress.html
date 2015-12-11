@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="background-header">
+    <div>
+      <h1 class="in-line">Irrigation Valve Automation</h1><img class="logo" src="http://i.imgur.com/9B43JLl.png">
+    </div>
+  </div>
+  <ul class="nav nav-pills nav-stacked float-left col-md-2">
+    <li ui-sref="myValves" class="btn btn-primary">My Current Valves</li>
+    <li ui-sref="add" class="btn btn-primary">Add Valve</li>
+  </ul>
+  <form class="col-md-6 well">
+    <div class="col-md-10">
+      <h4>Input your router's IP address with the port that will forward to your Arduino.</h4>
+      <p>Example: 192.168.253.1:3000</p>
+      <input ng-model="ipAddress" class="form-control" type="text">
+      <input class="btn btn-warning float-right" ng-click="updateUserWithIp()" type="submit">
+    </div>
+  </form>
+
+
+
+
+
+
+
+
+
+</div>

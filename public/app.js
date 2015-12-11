@@ -30,6 +30,11 @@ angular.module('app', ['ui.router'])
 				controller: 'historyCtrl',
 				templateUrl: './views/history.html'
 		})
+		.state('ip', {
+				url: '/ip',
+				controller: 'ipAddressCtrl',
+				templateUrl: './views/addIpAddress.html'
+		})
 })
 .constant('toastr', window.toastr);
 

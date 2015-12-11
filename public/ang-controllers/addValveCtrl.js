@@ -4,7 +4,7 @@ angular.module('app')
 	$scope.createNewValve = function() {
 		$scope.valve.user_id = $scope.authenticatedUser._id;
 		$scope.valve.valveNum = valveNum;
-		valveService.createNewValve($scope.valve)
+		valveService.createNewValve($scope.valve, $scope.authenticatedUser)
 			.then(function(response) {
 				userService.updateUserWithValveId($scope.authenticatedUser, response);
 				toastr.options.positionClass = 'toast-top-right'; 
@@ -21,6 +21,7 @@ angular.module('app')
 		var deferred = $q.defer();
 		userService.getCurrentUser().then(function(userObject) {
 			$scope.authenticatedUser = userObject;
+			console.log($scope.authenticatedUser);
 			deferred.resolve();	
 		})
 		return deferred.promise

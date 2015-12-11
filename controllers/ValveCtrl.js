@@ -16,7 +16,7 @@ module.exports = {
 					console.log(dateOn);
 					console.log(thisValve);
 					needle
-						.post('http://10.0.0.111', {valveID: thisValve._id, valveDrive: 'open'}, { multipart: true }, function(err, resp, body) {
+						.post('http://' + req.query.ip, {valveID: thisValve._id, valveDrive: 'open'}, { multipart: true }, function(err, resp, body) {
 							if (err) {
 								console.log(err);
 							} else {
@@ -32,7 +32,7 @@ module.exports = {
 				schedule.scheduleJob(dateOff, function() {
 					console.log(dateOff);
 					needle
-						.post('http://10.0.0.111', {valveID: thisValve._id, valveDrive: 'close'}, { multipart: true }, function(err, resp, body) {
+						.post('http://' + req.query.ip, {valveID: thisValve._id, valveDrive: 'close'}, { multipart: true }, function(err, resp, body) {
 							if (err) console.log(err);
 							else {
 								if (resp) console.log(resp);
@@ -79,7 +79,7 @@ module.exports = {
 							console.log(dateOn);
 							// console.log(thisValve);
 							needle
-								.post('http://10.0.0.111', {valveID: valve._id, valveDrive: 'open'}, { multipart: true }, function(err, resp, body) {
+								.post('http://' + req.query.ip, {valveID: valve._id, valveDrive: 'open'}, { multipart: true }, function(err, resp, body) {
 									if (err) {
 										console.log(err);
 									} else {
@@ -92,7 +92,7 @@ module.exports = {
 						schedule.scheduleJob(dateOff, function() {
 							console.log(dateOff);
 							needle
-								.post('http://10.0.0.111', {valveID: valve._id, valveDrive: 'close'}, { multipart: true }, function(err, resp, body) {
+								.post('http://' + req.query.ip, {valveID: valve._id, valveDrive: 'close'}, { multipart: true }, function(err, resp, body) {
 									if (err) console.log(err);
 									else {
 										if (resp) console.log(resp);
