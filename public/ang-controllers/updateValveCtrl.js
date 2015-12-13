@@ -22,6 +22,7 @@ angular.module('app')
 			$scope.currentUser = response;
 		})
 	}
+	$scope.getCurrentUser();
 	$scope.routeToAccnt = function() {
 		$state.go('account')
 	}
