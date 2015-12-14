@@ -1,7 +1,7 @@
 var Valve = require('../models/Valve.js');
 var History = require('../models/History.js');
 var schedule = require('node-schedule');
-var http = require('http');
+// var http = require('http');
 var needle = require('needle');
 
 module.exports = {
@@ -69,11 +69,9 @@ module.exports = {
 			if (err) {
 				res.status(500).send(err);
 			} else {
-				res.send(result);
 				Valve.findById(result._id, function(err, valve) {
 					if (err) res.status(500).send(err);
 					else {
-						
 						var dateOn = new Date(valve.timeOpen);
 						schedule.scheduleJob(dateOn, function() {
 							console.log(dateOn);
