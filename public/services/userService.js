@@ -3,7 +3,7 @@ angular.module('app')
 	this.getCurrentUser = function() {
 		return $http.get('/api/user/authenticated')
 			.then(function(response) {
-				// console.log('you hit getCurrentUser and this is the response', response.data);
+				console.log('you hit getCurrentUser and this is the response', response.data);
 				return response.data;
 			})	
 	}
