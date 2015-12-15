@@ -2,8 +2,8 @@ var express = require('express')
 ,	cors = require('cors')
 ,	mongoose = require('mongoose')
 ,	bodyParser = require('body-parser')
-,	port = 3000
-// ,	port = 80 //HOSTED
+// ,	port = 3000
+,	port = 80 //HOSTED
 ,	secret = require('./js/secret.js')
 ,	mongooseUri = "mongodb://localhost:27017/irrigation-motor-control"
 // ,	mongooseUri = secret.mongooseUri //HOSTED
@@ -28,8 +28,8 @@ var express = require('express')
 passport.use(new GoogleStrategy({
 	clientID: secret.clientID,
 	clientSecret: secret.clientSecret,
-	callbackURL: 'http://localhost:3000/auth/google/callback' 
-	// callbackURL: 'http://www.ivalveauto.com/auth/google/callback' //HOSTED
+	// callbackURL: 'http://localhost:3000/auth/google/callback' 
+	callbackURL: 'http://www.ivalveauto.com/auth/google/callback' //HOSTED
 },
 	function(req, accessToken, refreshToken, profile, done){
 		var query = { 'google.id': profile.id };
@@ -91,8 +91,8 @@ passport.deserializeUser(function(user, done) {
 
 app.route('/auth/google/callback')
 	.get(passport.authenticate('google', {
-		// successRedirect: 'http://www.ivalveauto.com/#/valves', //HOSTED
-		successRedirect: '/#/valves',
+		successRedirect: 'http://www.ivalveauto.com/#/valves', //HOSTED
+		// successRedirect: '/#/valves',
 		failureRedirect: '/error'
 	}));
 
