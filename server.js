@@ -2,7 +2,6 @@ var express = require('express')
 ,	cors = require('cors')
 ,	mongoose = require('mongoose')
 ,	bodyParser = require('body-parser')
-// ,	port = 3000
 ,	port = 80 //HOSTED
 ,	secret = require('./js/secret.js')
 // ,	mongooseUri = "mongodb://localhost:27017/irrigation-motor-control"
@@ -34,7 +33,7 @@ passport.use(new GoogleStrategy({
 	function(req, accessToken, refreshToken, profile, done){
 		var query = { 'google.id': profile.id };
 
-           User.findOne(query, function (error, user) {
+           User.findOne(query, function ( error, user) {
 
                if (user) {
                 //    console.log('Google user found in database: ', user);
@@ -124,7 +123,7 @@ app.put('/api/valves/status', ValveCtrl.updateValveStatus);
 //AUTH//
 app.get('/api/user/authenticated', function(req, res) {
 	if(req.user) res.send(req.user);
-	else console.log('There is not authenticated user');
+	else console.log('There is no authenticated user');
 })
 //HISTORY//
 app.post('/api/history', HistoryCtrl.addHistory);

@@ -9,6 +9,7 @@ angular.module('app')
 		})				
 	}
 	getValve($stateParams.valveId);
+    
 	$scope.updateValve = function(valve) {
 		$scope.valve.status = 'Pending';
 		valveService.updateValve(valve, $scope.currentUser).then(function(valve) {

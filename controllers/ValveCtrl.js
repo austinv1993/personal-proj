@@ -13,8 +13,8 @@ module.exports = {
 			} else {
 				var dateOn = new Date(req.body.timeOpen);
 				schedule.scheduleJob(dateOn, function() {
-					console.log(dateOn);
-					console.log(thisValve);
+					// console.log(dateOn);
+					// console.log(thisValve);
 					needle
 						.post('http://' + req.query.ip, {valveID: thisValve._id, valveDrive: 'open'}, { multipart: true }, function(err, resp, body) {
 							if (err) {
@@ -74,7 +74,7 @@ module.exports = {
 					else {
 						var dateOn = new Date(valve.timeOpen);
 						schedule.scheduleJob(dateOn, function() {
-							console.log(dateOn);
+							// console.log(dateOn);
 							// console.log(thisValve);
 							needle
 								.post('http://' + req.query.ip, {valveID: valve._id, valveDrive: 'open'}, { multipart: true }, function(err, resp, body) {
